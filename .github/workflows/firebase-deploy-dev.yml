@@ -61,10 +61,9 @@ jobs:
         environment: dev
         steps:
             - uses: actions/checkout@v3
-            - shell: bash
+            - name: Deploy to Firebase
+              uses: w9jds/firebase-action@master
+              with:
+                  args: deploy
               env:
-                  FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SATIENCE_DEV }}
-              run: |
-                  yarn global add firebase-tools
-                  firebase use dev
-                  firebase deploy --token=$FIREBASE_SERVICE_ACCOUNT --project jobelhome-test --non-interactive -f
+                  FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SATIENCE_DEV }}
