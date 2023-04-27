@@ -47,10 +47,10 @@ jobs:
         environment: dev
         steps:
             - uses: actions/checkout@v3
-            - run: firebase deploy
             - uses: FirebaseExtended/action-hosting-deploy@v0
               with:
                   repoToken: "${{ secrets.GITHUB_TOKEN }}"
                   firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_SATIENCE_DEV }}"
                   channelId: live
                   projectId: satience-dev
+            - run: firebase deploy
