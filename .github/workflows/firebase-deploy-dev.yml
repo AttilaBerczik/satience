@@ -11,23 +11,41 @@ env:
     NODE_VERSION: "18.13" # set this to the node version to use (e.g. '8.x', '10.x', '12.x')
 
 jobs:
-    build-and-deploy:
+    setup:
         runs-on: ubuntu-latest
         environment: dev
         steps:
+            - uses: actions/checkout@v3
             - name: Setup Node ${{ env.NODE_VERSION }} Environment
               uses: actions/setup-node@v3
               with:
                   node-version: ${{ env.NODE_VERSION }}
-
+    build:
+        needs: setup
+        runs-on: ubuntu-latest
+        environment: dev
+        steps:
+            - uses: actions/checkout@v3
             - name: "Download dependencies and build"
               shell: bash
               run: |
+                  echo "install dependencies in base folder"
+                  pwd
                   yarn install
+                  echo "build dependencies in base folder"
                   yarn build
+                  echo "go into functions folder"
                   cd functions
+                  pwd
+                  echo "install dependencies in functions folder"
                   yarn install
+                  echo "build dependencies in functions folder"
                   yarn build
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest
+        environment: dev
+        steps:
             - uses: actions/checkout@v3
             - run: firebase deploy
             - uses: FirebaseExtended/action-hosting-deploy@v0
