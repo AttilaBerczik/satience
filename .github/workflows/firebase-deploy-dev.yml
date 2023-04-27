@@ -50,6 +50,10 @@ jobs:
                   yarn install
                   echo "build dependencies in functions folder"
                   yarn tsc
+            - name: export env variables
+              run: export REACT_APP_FIREBASE_AUTH_DOMAIN=$REACT_APP_FIREBASE_AUTH_DOMAIN
+              env:
+                  REACT_APP_FIREBASE_AUTH_DOMAIN: ${{ secrets.REACT_APP_FIREBASE_AUTH_DOMAIN }}
             - name: Deploy to Firebase
               uses: w9jds/firebase-action@master
               with:
