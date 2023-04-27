@@ -53,4 +53,3 @@ jobs:
                   firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_SATIENCE_DEV }}"
                   channelId: live
                   projectId: satience-dev
-            - run: firebase deploy
