@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "satience-dev"
-  }
+    "default": "satience-dev",
+    "dev": "satience-dev",
+    "prod": "satience-prod"
+  },
+  "targets": {},
+  "etags": {}
 }
