@@ -1,4 +1,4 @@
-const authDomain = process.env.REACT_APP_FIREBASE_AUTH_DOMAIN;
+const authDomain = process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN;
 
 const Home = () => {
     console.log(authDomain);
