@@ -1,7 +1,6 @@
-const authDomain = process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN;
+import {createContext} from "react";
 
 const Home = () => {
-    console.log(authDomain);
     return (
         <>
             <p>Hello World</p>
