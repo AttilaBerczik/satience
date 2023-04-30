@@ -38,11 +38,6 @@ jobs:
             - name: "Download dependencies and build"
               shell: bash
               run: |
-                  echo "install dependencies in base folder"
-                  pwd
-                  yarn install
-                  echo "build dependencies in base folder"
-                  yarn build
                   echo "go into functions folder"
                   cd functions
                   pwd
